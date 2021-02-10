@@ -1,0 +1,125 @@
+Usecase Description,Type,Industry,Impact,Data Richness
+Identify and navigate roads and obstructions in real-time for autonomous driving,Process unstructured data,automotive,1.5,2.0
+Predict failure and recommend proactive maintenance on vehicle components,Predictive maintenance,automotive,0.9,1.0
+Optimize manufacturing process in real time— determine where to dedicate resources to reduce bottlenecks and cycle time ,Operations/logistics optimisation (real time),automotive,0.7,1.0
+Optimize lane choices and path routing based on multi-modal data to reduce length of trip,Operations/logistics optimisation (real time),automotive,0.6,1.7
+Recognize complex voice commands to access greater variety of services and features,Process unstructured data,automotive,0.5,0.3
+"Predict outcomes using fewer experiments to reduce experimental R&D costs (e.g.,component testing, track testing)",Forecasting,automotive,0.4,0.3
+Discover anomalies across fleet of vehicle sensor data to identify potential failure risks and pre-empt recalls,Discover new trends/anomalies,automotive,0.4,1.0
+Optimize aggregate marketing mix and marketing spend,Price and product optimisation,automotive,0.3,0.3
+"Personalize in-vehicle recommendations based on location data and passenger preferences (e.g., recommending local attractions or shops for proactive maintenance)",Radical personalisation,automotive,0.3,1.7
+Predict market potential for new product innovation,Forecasting,automotive,0.3,1.7
+Predict failure and recommend proactive maintenance for production and moving equipment,Predictive maintenance,manufacturing,1.3,1.0
+Optimize complex manufacturing process in real time—determine where to dedicate resources to reduce bottlenecks and cycle time,Operations/logistics optimisation (real time),manufacturing,1.1,1.0
+Predict future demand trends and potential constraints in supply chain,Forecasting,manufacturing,0.8,0.7
+"Identify design problems in pre-production to reduce ramp-up time to maximum output (i.e., yield ramp)",Predictive analytics,manufacturing,0.6,0.3
+"Identify root causes for low product yield (e.g., tool-/die-specific issues) in manufacturing",Discover new trends/anomalies,manufacturing,0.5,0.7
+Detect defects and quality issues during production using visual and other data,Process unstructured data,manufacturing,0.4,0.7
+"Optimize resource allocation in R&D and manufacturing, leveraging diverse data (e.g., communications, documentation) to track progress",Resource allocation,manufacturing,0.4,0.3
+Optimize R&D experimental efficiency through process/operations,Operations/logistics optimisation (real time),manufacturing,0.4,0.3
+"Determine root causes for quality issues developed outside of manufacturing (e.g., during delivery, in supply chain)",Discover new trends/anomalies,manufacturing,0.3,0.7
+"Identify critical factors to reduce number of required experiments for R&D and testing (e.g., component testing)",Predictive analytics,manufacturing,0.2,0.7
+Optimize in-store product assortment to maximize sales ,Price and product optimisation,consumer products,1.3,1.0
+Personalize product recommendations and advertising to target individual consumers,Radical personalisation,consumer products,1.1,1.3
+"Optimize logistics, procurement timing, and inventory distribution across warehouses/stores",Operations/logistics optimisation (real time),consumer products,1.1,1.7
+Predict hyperregional sales/demand trends using real-time data,Forecasting,consumer products,0.9,1.3
+Predict market potential for new product innovation,Price and product optimisation,consumer products,0.6,0.3
+Optimize aggregate marketing mix and marketing spend,Price and product optimisation,consumer products,0.5,0.3
+"Classify visual features from in-store video to collect data on product placement, product touches, and other key performance indicators for use in auditing or market research",Process unstructured data,consumer products,0.2,0.7
+Predict risk of individual employee churn and recommend solutions,Predictive maintenance,consumer products,0.1,1.0
+"Route call-center cases based on multi-modal data (e.g., customer preferences, audio data) to increase customer satisfaction and reduce handling costs",Predictive analytics,consumer products,0.1,1.3
+Write product descriptions and ads for diverse product portfolio,Price and product optimisation,consumer products,0,0.3
+"Personalize product offerings to target individual consumers based on multi-modal data (mobile, social media, location, etc.) ",Radical personalisation,finance,1.2,1.7
+Identify fraudulent activity using customer transactions and other relevant data ,Discover new trends/anomalies,finance,1.0,1.3
+"Evaluate customer credit risk using application and other relevant data for less biased real-time
+underwriting decisions",Predictive analytics,finance,0.9,1.0
+Predict risk of churn for individual customers/clients and recommend renegotiation strategy ,Predictive maintenance,finance,0.7,0.7
+"Discover new complex interactions in the financial system to support better risk modeling 
+and stress testing",Discover new trends/anomalies,finance,0.7,0.7
+Predict risk of loan delinquency and recommend proactive maintenance strategies ,Predictive analytics,finance,0.5,1.0
+"Predict asset price movements based on greater quantities of data (e.g.,  social media, video feeds) to inform trading strategies ",Forecasting,finance,0.4,1.3
+Optimize labor staffing and distribution to reduce operational costs in front and back office ,Resource allocation,finance,0.4,0.7
+"Route call-center cases based on multi-modal data (e.g., customer preferences, audio data) to increase customer satisfaction and reduce handling costs",Predictive analytics,finance,0.1,1.7
+"Optimize branch/ATM network based on diverse signals of demand (e.g., social data,
+transactions)",Resource allocation,finance,0.1,0.3
+Customize growing techniques specific to  individual plot characteristics and relevant real-time data ,Radical personalisation,agriculture,1.1,1.3
+"Optimize pricing in real time based on future market, weather, and other forecasts",Price and product optimisation,agriculture,1.0,0.7
+Predict yield for farming or production leveraging IoT sensor data and other relevant data,Forecasting,agriculture,0.8,0
+"Predict real-world results from fewer experiments to reduce experimental R&D costs  (e.g., new crop testing)",Price and product optimisation,agriculture,0.8,0.3
+"Predict new high-value crop strains based on past crops, weather/soil trends, and other data ",Price and product optimisation,agriculture,0.8,0.3
+Predict product demand trends to inform production decisions,Forecasting,agriculture,0.7,0
+Optimize production process in real time— determine where to dedicate resources to reduce bottlenecks and cycle time,Operations/logistics optimisation (real time),agriculture,0.5,0.7
+Predict failure and recommend proactive maintenance for farming and production equipment,Predictive maintenance,agriculture,0.3,0.3
+Construct detailed map of farm characteristics based on aerial video ,Process unstructured data,agriculture,0.1,0.3
+Optimize purchasing mix across suppliers and locations ,Resource allocation,agriculture,0.1,0
+"Predict failure and recommend proactive  maintenance for mining, drilling, power  generation, and moving equipment ",Predictive maintenance,energy,1.6,0.7
+Replicate human-made decisions in control  room environments to reduce cost and human error,Predictive analytics,energy,0.9,1.3
+"Optimize energy scheduling/dispatch of power plants based on energy pricing, weather, and other real-time data ",Operations/logistics optimisation (real time),energy,0.9,1.3
+Optimize blend and timing of raw materials in refining and similar processes ,Resource allocation,energy,0.7,0.3
+"Optimize mine plans based on drilling samples, past sites, and other data ",Resource allocation,energy,0.5,0.7
+Predict energy demand trends based on multi-modal data ,Forecasting,energy,0.5,1.7
+Optimize aggregate pricing and promotional targeting to energy customers ,Price and product optimisation,energy,0.4,1.0
+Interpolate ground composition to reduce necessary exploratory drilling samples ,Forecasting,energy,0.2,0.3
+Predict lifetime value and risk of churn for individual customers ,Predictive analytics,energy,0.2,1.0
+Optimize specifications in construction for power generation equipment based on previous sites and other relevant data ,Resource allocation,energy,0.1,0.7
+"Diagnose known diseases from scans, biopsies, audio, and other data ",Predictive analytics,health care,1.4,0.3
+Predict personalized health outcomes to  optimize recommended treatment ,Radical personalisation,health care,1.2,1.3
+Optimize labor staffing and resource allocation to reduce bottlenecks ,Resource allocation,health care,0.7,0.7
+"Identify fraud, waste, and abuse patterns in diverse clinical and operations data ",Discover new trends/anomalies,health care,0.6,0.3
+Predict individual hospital admission rates using historical and real-time data ,Forecasting,health care,0.5,0.7
+"Triage patient cases during hospital admission  using patient data, audio, and video ",Predictive analytics,health care,0.5,0.3
+"Personalize messaging and approach (e.g., nudges) to improve wellness and adherence ",Radical personalisation,health care,0.4,1.3
+Evaluate doctor performance and provide outcome-improving feedback ,Predictive analytics,health care,0.3,0.3
+Detect major trauma events from wearables ensor data and signal emergency response ,Process unstructured data,health care,0.2,1.7
+Predict lifetime value and risk of churn for individual customers ,Predictive analytics,health care,0.2,1.0
+"Optimize design of clinical trials, including label writing and patient selection ",Price and product optimisation,pharmaceuticals ,1.3,0
+"Predict outcomes from fewer or diverse (e.g., animal testing) experiments to reduce experimental R&D costs and time to market",Predictive analytics,pharmaceuticals ,0.9,0.3
+Predict risk of individual patient churn and optimal corrective strategy to maintain adherence,Predictive analytics,pharmaceuticals ,0.8,0.7
+"Identify target patient subgroups that are underserved (e.g., not diagnosed), and recommend mitigation strategy ",Discover new trends/anomalies,pharmaceuticals ,0.7,1.3
+"Optimize resource allocation (e.g., reduce search space, prioritize drugs) in drug development using disease trends and other data",Resource allocation,pharmaceuticals ,0.7,0
+Identify high-value providers and target marketing/product mix ,Price and product optimisation,pharmaceuticals ,0.7,0.7
+Optimize product launch strategy based on past launches and relevant data ,Price and product optimisation,pharmaceuticals ,0.4,0
+"Discover new alternative applications for developed drugs (i.e., label expansion) ",Discover new trends/anomalies,pharmaceuticals ,0.3,0.3
+Predict hyperregional product demand and relevant health trends ,Forecasting,pharmaceuticals ,0.2,1.0
+Optimize pricing strategy for drug portfolio ,Price and product optimisation,pharmaceuticals ,0.2,0
+"Optimize public resource allocation for urban development to improve quality of life (e.g., reduce traffic, minimize pollution)",Resource allocation,public and social sector,1.1,0.7
+"Optimize public policy decisions (e.g., housing) to take into account greater set of complex interactions",Predictive analytics,public and social sector,0.9,1.0
+"Personalize public services to target individual citizens based on multi-modal data (mobile, social media, location, etc.) ",Radical personalisation,public and social sector,0.8,1.3
+"Replicate back-office decision processes for applications, permitting, tax auditing, etc. ",Predictive analytics,public and social sector,0.6,1.0
+"Optimize procurement strategy to reduce costs for large government agencies (e.g., defense) ",Resource allocation,public and social sector,0.5,0.3
+Forecast macroeconomic variables based on vast government-proprietary and public data ,Forecasting,public and social sector,0.5,0.7
+Predict individualized educational and career paths to maximize engagement and success ,Radical personalisation,public and social sector,0.4,1.3
+"Predict risk of failure for physical assets (e.g., military, infrastructure) and recommend proactive maintenance ",Predictive maintenance,public and social sector,0.3,1.0
+Optimize labor allocation for publicly provided services to match demand ,Resource allocation,public and social sector,0.3,1.3
+"Optimize pricing for government provided goods and services (e.g., tolls, park entrance fees) ",Price and product optimisation,public and social sector,0.2,0.3
+"Predict risk of illicit activity or terrorism using historical crime data, intelligence data, and other available sources (e.g., predictive policing) ",Predictive analytics,public and social sector,0.2,1.7
+"Personalize advertising and recommendations to target individual consumers based on multi-modal data (mobile, social media, location, etc.)",Radical personalisation,media,1.9,1.3
+"Discover new trends in consumption patterns (e.g., viral content) ",Discover new trends/anomalies,media,1.2,1.3
+Optimize pricing for services/offerings based on customer-specific data ,Price and product optimisation,media,0.7,1.0
+"Predict viewership for new content to optimize content production decisions using multi-modal data (mobile, social media, past productions, etc.)",Predictive analytics,media,0.7,1.0
+Predict risk of individual customer churn based on multimodal data ,Predictive analytics,media,0.7,1.3
+Optimize aggregate marketing mix and marketing spend ,Price and product optimisation,media,0.3,0.3
+"Identify relevant features (e.g., copyright infringement, audience suitability) in media data content",Process unstructured data,media,0.2,0
+"Identify high-value leads by combining internal and external data (press releases, etc.) for B2B customers ",Discover new trends/anomalies,media,0.2,1.0
+Optimize resource allocation in network vs. current and future loads ,Resource allocation,media,0.1,0
+Optimize release dates and regional targeting for film rollouts ,Price and product optimisation,media,0.1,0.3
+Predict lifetime value and risk of churn for individual customers ,Predictive analytics,telecom,1.3,1.3
+Optimize capex investment across network ,Resource allocation,telecom,1.1,0.3
+"Personalize strategy to target individual consumers based on multi-modal data (mobile, social media, location, etc.) ",Radical personalisation,telecom,1.1,1.3
+Optimize call-center routing for individual calls (fewer agent-handled calls),Predictive analytics,telecom,0.8,1.3
+Discover new trends in consumer behavior using mobile data and other relevant data ,Discover new trends/anomalies,telecom,0.5,1.3
+"Predict failure and recommend proactive for fixed (substations, poles) and moving equipment ",Predictive maintenance,telecom,0.4,0.7
+Optimize micro-campaigns and short-term promotions ,Price and product optimisation,telecom,0.4,0.3
+Predict regional demand trends for voice/data/other traffic ,Forecasting,telecom,0.3,1.7
+Replicate financial planning and other costly back-office functions ,Predictive analytics,telecom,0.1,0.7
+Optimize field-force labor allocation ,Resource allocation,telecom,0.1,0.7
+"Optimize pricing and scheduling based on real- time demand updates (e.g., airlines, less than truckload shipping, mobility services) ",Price and product optimisation,"transport, travel and logistics",1.7,1.3
+"Predict failure and recommend proactive maintenance for planes, trucks, and other moving equipment ",Predictive maintenance,"transport, travel and logistics",1.1,0.7
+"Optimize routing in real time (e.g., airlines, logistics, last mile routing for complex event processing)",Operations/logistics optimisation (real time),"transport, travel and logistics",0.9,1.3
+Optimize staffing levels and asset placement in real time,Operations/logistics optimisation (real time),"transport, travel and logistics",0.5,0.3
+Personalize loyalty programs and promotional offerings to individual customers,Radical personalisation,"transport, travel and logistics",0.4,1.0
+Personalize product recommendations to target individual consumers,Radical personalisation,"transport, travel and logistics",0.4,1.0
+Predict hyperregional sales/demand trends ,Forecasting,"transport, travel and logistics",0.3,0.7
+Identify performance and risk for drivers/pilots through driving patterns and other data ,Predictive analytics,"transport, travel and logistics",0.2,1.0
+Predict lifetime value and risk of churn for individual customers ,Predictive analytics,"transport, travel and logistics",0.2,0.3
+Read addresses/bar codes in mail/parcel sorting machines to improve efficiency and reduce human error,Process unstructured data,"transport, travel and logistics",0.2,1.3
