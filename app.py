@@ -13,8 +13,8 @@ def home():
 
 
 @app.route("/article", methods=["GET", "POST"])
-def predict_api():
-    return "Welcome to API Deployment"
+def article_description():
+    return "Welcome to Deployment"
 
 
 if __name__ == '__main__':
