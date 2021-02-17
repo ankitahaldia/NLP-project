@@ -10,11 +10,12 @@ def main():
     st.image(image, caption=None, width=100)
     st.markdown("###")
     st.header("Upload your document to be analyzed")
-    filename = st.file_uploader("Upload", type=["pdf", "txt"])
+    filename = st.file_uploader("Upload", type=["pdf", "txt", "jpg"])
     if filename is not None:
-        st.write(model.predict("Cybersecurity provider ZingBox has announced the launch of a new generation of cybersecurity solutions, called IoT Guardian, which focuses on service protection."))
-        st.write(filename)
-    st.button("Analyze")
+        if st.button("Analyze"):
+            tis = ["Hello", "World"]
+            st.write(tis[0])
+    
 
 
 if __name__ == "__main__":
