@@ -5,9 +5,8 @@ from nltk.tokenize import word_tokenize
 from nltk.tag import pos_tag
 from nltk.stem import WordNetLemmatizer
 
-# import nlp to create Doc objects
-import nlp
-
+# import entirely spacy to create Doc objects through nlp
+import spacy
 from spacy import load, lang
 
 from gensim.corpora.dictionary import Dictionary
@@ -20,9 +19,13 @@ from collections import Counter
 from typing import List
 from typing import Dict
 
+# WARNINGS
+# W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+# I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine
+
 # GLOBAL VARIABLES
 NES = ['microsoft']
-INDUSTRIES = Dict[List[str]] = {
+INDUSTRIES: Dict[str, List[str]] = {
     'automative': ['automotive', 'taxi', 'wheel', 'fuel', 'car', 'drive', 'auto', 'selfdrive', 'vehicle', 'road',
                    'automobile'],
     'Manufacturing': ['cleantech', 'deindustrialization', 'prefabrication', 'manufacturing', 'vitrification',
@@ -35,7 +38,7 @@ INDUSTRIES = Dict[List[str]] = {
                     'food', 'land'],
     'Energy': ['renewable', 'sustainable', 'green', 'electricity', 'energy', 'power', 'mines', 'solar', 'light',
                'metal', 'electric', 'carbon', 'electonic', 'wind', 'speed'],
-    'Health Care': ['Health', 'Care', 'emergency', 'doctor', 'wellness', 'patient', 'hospital', 'clinic', 'treatment',
+    'Health Care': ['Health', 'Ca re', 'emergency', 'doctor', 'wellness', 'patient', 'hospital', 'clinic', 'treatment',
                     'disease', 'medical', 'cancer'],
     'Pharmaceuticals': ['dose', 'pillbox', 'tonic', 'tablet', 'placebo', 'medicate', 'hospital', 'Pharmaceutical',
                         'drug', 'diagnose', 'test', 'trial', 'medicine', 'vaccine'],
@@ -47,8 +50,7 @@ INDUSTRIES = Dict[List[str]] = {
     'Telecom': ['location', 'station', 'host', 'telecom', 'mobile', 'voice', 'call', 'subscription', 'network', 'phone',
                 'broadcast', 'internet', 'communication', 'modulation'],
     'Transport & Logistics': ['transport', 'logistic', 'mail', 'parcel', 'travel', 'route', 'planes', 'truck',
-                              'shipping', 'mobility', 'movement']
-}
+                              'shipping', 'mobility', 'movement']}
 
 
 def lemmatize(texts_tokens: List[List[str]]) -> List[List[str]]:
@@ -119,7 +121,7 @@ class Nlp_Classifier:
         no_nes = [[t for t in no_stop if t not in self.nes] for no_stop in no_stops]
         return no_nes
 
-    def predict_group(self, texts_tokens: List[List[str]], groups_keywords: Dict[List[str]] = None,
+    def predict_group(self, texts_tokens: List[List[str]], groups_keywords: Dict[str, List[str]] = None,
                       identifiers_number=20) -> List:
         if groups_keywords is None:
             groups_keywords = self.groups_keywords['industry']
@@ -136,7 +138,7 @@ class Nlp_Classifier:
         key_list = list(groups_keywords.keys())
         groups_keywords_docs = []
         for key, value in groups_keywords.items():
-            groups_keywords_docs.append(nlp(groups_keywords[key]))
+            groups_keywords_docs.append(spacy.nlp(groups_keywords[key]))
         # Predict industry type with similarity method along two nlp object for all texts in industry_type_list
         # Select the most frequent words for each text a and convert list into string
         texts_identifiers = [[dictionary.get(term_id) for term_id, weight in tfidf_weight[:identifiers_number]]
@@ -145,7 +147,7 @@ class Nlp_Classifier:
         groups = []
         for ti in texts_identifiers:
             # Create nlp object based only on text identifiers
-            doc_publication = nlp(ti)
+            doc_publication = spacy.nlp(ti)
             similarities = []
             for gkd in groups_keywords_docs:
                 similarities.append(doc_publication.similarity(gkd))
