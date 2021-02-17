@@ -1,5 +1,3 @@
-
-
 from transformers import BertForSequenceClassification
 from transformers import BertTokenizer
 import numpy as np
