@@ -108,23 +108,19 @@ class Preprocess:
         return text_cleaned
 
     def tokenize_texts(self, texts:Series, stop_words: List[str] = None, named_entities: List[str] = None,
-                   lenght_min: int=2) -> List[List[str]]:
+                   lenght_min: int=2, freq_min=None, freq_max=None) -> List[List[str]]:
         texts_tokens = []
         for text in texts:
-            texts_tokens = texts_tokens.append(self.tokenize_text(text, stop_words, named_entities, lenght_min))
+            texts_tokens.append(self.tokenize_text(text, stop_words, named_entities, lenght_min))
+        texts_filtered = filter_words(texts_tokens, freq_min, freq_max)
         return texts_tokens
 
 
 #testing
-"""
 if str(cwd()).find('belearner'):
     START_PATH = dir(cwd())
     DATA_PATH = join(START_PATH + r'\data\new_file.csv')
-    df = pd.read_csv(DATA_PATH, delimiter='\t')
-
+    #testing a 100 docs sample
+    df = pd.read_csv(DATA_PATH, delimiter='\t').sample(10)
     preprocess = Preprocess()
-    def clean_text(text):
-        tokens = preprocess.tokenize_text(text)
-        return " ".join(tokens)
-    train_cleaned = xtrain.copy(deep=True).apply(clean_text)
-"""
+    tokenize_texts = preprocess.tokenize_texts(df.text)
