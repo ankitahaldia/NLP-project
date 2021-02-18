@@ -24,11 +24,6 @@ from typing import Dict
 # GLOBAL VARIABLES
 NAMED_ENTITIES = ['microsoft']
 
-
-
-
-
-
 def lemmatize(text_tokens: List[str]) -> List[str]:
     def get_wordnet_pos(word):
         """Map POS tag to first character lemmatize() accepts"""

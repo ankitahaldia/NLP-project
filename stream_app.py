@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
 import pickle
-import PyPDF2
+#import PyPDF2
 import nltk
 import numpy as np
 from scipy.sparse import lil_matrix
@@ -30,7 +30,7 @@ def main():
                 f.write(filename.getbuffer())
                 tis = ["Hello", "World"]
                 st.write(tis[0])
-            extracted_text = pdf_file_read(file_location)
+            #extracted_text = pdf_file_read(file_location)
             # st.write(type(extracted_text))
             # st.write(prediction(extracted_text))
             nlp_model = Preprocess()
@@ -108,3 +108,5 @@ def tokenize_lemma_stopwords(text):
 
 if __name__ == "__main__":
     main()
+    text = "Davy is educated and studying law"
+    print(nlp_model.clean_text(text))
