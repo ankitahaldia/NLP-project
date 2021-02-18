@@ -61,7 +61,7 @@ def filter_words(texts_lemmatized: List[List[str]], freq_min=None, freq_max=None
 
 class Preprocess:
     def __init__(self, nlp_model='en_core_web_md'):
-        self.nlp = load(nlp_model)
+        self.nlp = spacy.load(nlp_model)
         self.stop_words = lang.en.stop_words.STOP_WORDS
         self.named_entities = set(NAMED_ENTITIES)
 
@@ -112,17 +112,3 @@ class Preprocess:
         for text in texts:
             texts_tokens = texts_tokens.append(self.tokenize_text(text, stop_words, named_entities, lenght_min))
         return texts_tokens
-
-
-
-
-#if str(cwd()).find('belearner'):
-#    START_PATH = dir(cwd())
-#    DATA_PATH = join(START_PATH + r'\data\new_file.csv')
-#    df = pd.read_csv(DATA_PATH, delimiter='\t')
-#    preprocess = Preprocess()
-#    def clean_text(text):
-#        tokens = preprocess.tokenize_text(text)
-#        return " ".join(tokens)
-#    train_cleaned = xtrain.copy(deep=True).apply(clean_text)
-#
