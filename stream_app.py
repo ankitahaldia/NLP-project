@@ -2,8 +2,8 @@ import streamlit as st
 from PIL import Image
 import pickle
 import PyPDF2
-import numpy as np
 import nltk
+import numpy as np
 from scipy.sparse import lil_matrix
 from nltk.stem.porter import PorterStemmer
 from nltk.stem import WordNetLemmatizer
@@ -31,10 +31,10 @@ def main():
                 tis = ["Hello", "World"]
                 st.write(tis[0])
             extracted_text = pdf_file_read(file_location)
-            st.write(type(extracted_text))
-            st.write(prediction(extracted_text))
-            # nlp_model = Preprocess()
-            # st.write(nlp_model.preprocess(extracted_text))
+            # st.write(type(extracted_text))
+            # st.write(prediction(extracted_text))
+            nlp_model = Preprocess()
+            st.write(nlp_model.clean_text(extracted_text))
 
 
 def pdf_file_read(file_name):
@@ -57,18 +57,6 @@ def pdf_file_read(file_name):
     pdfFileObj.close()
 
     return text
-
-
-def tokenize_lemma_stopwords(text):
-    text = text.replace("\n", " ")
-    tokens = nltk.tokenize.word_tokenize(text.lower()) # split string into words (tokens)
-    tokens = [t for t in tokens if t.isalpha()] # keep strings with only alphabets
-    tokens = [wordnet_lemmatizer.lemmatize(t) for t in tokens] # put words into base form
-    tokens = [stemmer.stem(t) for t in tokens]
-    tokens = [t for t in tokens if len(t) > 2] # remove short words, they're probably not useful
-    tokens = [t for t in tokens if t not in english_stops] # remove stopwords
-    cleanedText = " ".join(tokens)
-    return cleanedText
 
 
 def prediction(extracted_text) :
@@ -104,6 +92,18 @@ def prediction(extracted_text) :
     predicted_industries.append(key_list[positions[1]])
 
     return predicted_industries
+
+
+def tokenize_lemma_stopwords(text):
+    text = text.replace("\n", " ")
+    tokens = nltk.tokenize.word_tokenize(text.lower()) # split string into words (tokens)
+    tokens = [t for t in tokens if t.isalpha()] # keep strings with only alphabets
+    tokens = [wordnet_lemmatizer.lemmatize(t) for t in tokens] # put words into base form
+    tokens = [stemmer.stem(t) for t in tokens]
+    tokens = [t for t in tokens if len(t) > 2] # remove short words, they're probably not useful
+    tokens = [t for t in tokens if t not in english_stops] # remove stopwords
+    cleanedText = " ".join(tokens)
+    return cleanedText
 
 
 if __name__ == "__main__":
