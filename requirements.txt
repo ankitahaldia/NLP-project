@@ -1,0 +1,8 @@
+numpy
+pypdf2
+streamlit
+nltk
+pickle
+wordcloud
+scikit-learn
+co
