@@ -15,6 +15,7 @@ from sklearn.preprocessing import MultiLabelBinarizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.svm import LinearSVC
 from sklearn.multiclass import OneVsRestClassifier
+from skmultilearn.problem_transform import LabelPowerset
 
 # Single label classification
 import spacy
@@ -71,19 +72,27 @@ class Model:
             _ = data.columns.to_list()
             y_columns = list(set(_)-set([X_column]))
         X = data[X_column]
-        y = data.drop(X_column, axis=1)
+        y: DataFrame = data.drop(X_column, axis=1)
         xtrain, xtest, ytrain, ytest = train_test_split(X, y, random_state=42, test_size=0.2)
         mlb = MultiLabelBinarizer()
         train_labels = mlb.fit_transform(ytrain[y_columns].values)
-        test_labels = mlb.fit_transform(ytest[y_columns].values)
-        train_cleaned = xtrain.copy(deep=True).apply(self.Preprocess.preprocess)
-        test_cleaned = xtest.copy(deep=True).apply(self.Preprocess.preprocess)
+        # test_labels not used when training
+        # test_labels = mlb.fit_transform(ytest[y_columns].values)
+        preprocess = nlp_preprocess.Preprocess()
+        def clean_text(text):
+            tokens = preprocess.tokenize_text(text)
+            return " ".join(tokens)
+        train_cleaned = xtrain.copy(deep=True).apply(clean_text)
+        # test cleaned not used when training
+        # test_cleaned = xtest.copy(deep=True).apply(clean_text)
         vectorizer = TfidfVectorizer()
         vectorised_train_documents = vectorizer.fit_transform(train_cleaned)
-        svmclassifier = OneVsRestClassifier(LinearSVC(), n_jobs=-1)
-        svmclassifier.fit(vectorised_train_documents, train_labels)
-        dump(svmclassifier, open("linearsvc.pickle", "wb"))
-        return svmclassifier
+        powersetsvc = LabelPowerset(LinearSVC())
+        powersetsvc.fit(vectorised_train_documents, train_labels)
+        dump(powersetsvc, open("powersetsvc.pickle", "wb"))
+        with open('vec.pickle', 'wb') as f1:
+            dump(vectorizer, f1)
+        return powersetsvc, vectorizer
 
 
     def predict_group(self, texts_tokens: List[List[str]], groups_keywords: Dict[str, List[str]] = None,
@@ -128,6 +137,6 @@ if str(cwd()).find('belearner'):
     DATA_PATH = join(START_PATH + r'\data\new_file.csv')
     df = pd.read_csv(DATA_PATH, delimiter='\t')
     model = Model()
-    svmclassifier = model.train(data= df,X_column= 'text')
+    powersetsvc, vectorizer = model.train(data= df,X_column= 'text')
 
 
