@@ -31,7 +31,6 @@ def main():
                 tis = ["Hello", "World"]
                 st.write(tis[0])
             extracted_text = pdf_file_read(file_location)
-            st.write(type(extracted_text))
             
             nlp_model = Preprocess()
             processed_text = nlp_model.clean_text(extracted_text)
