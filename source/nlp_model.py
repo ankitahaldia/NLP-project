@@ -65,7 +65,7 @@ class Model:
         self.nlp = load(nlp_model)
         self.groups_keywords = {}
         self.groups_keywords['industry'] = INDUSTRIES
-        self.Preprocess = nlp_preprocess.Preprocess(nlp_model='en_core_web_md')
+        self.preprocess = nlp_preprocess.Preprocess(nlp_model='en_core_web_md')
 
     def train(self, data: DataFrame, X_column: str, y_columns: List[str] = None):
         if y_columns is None:
@@ -76,11 +76,17 @@ class Model:
         xtrain, xtest, ytrain, ytest = train_test_split(X, y, random_state=42, test_size=0.2)
         mlb = MultiLabelBinarizer()
         train_labels = mlb.fit_transform(ytrain[y_columns].values)
-        # test_labels not used when training
-        # test_labels = mlb.fit_transform(ytest[y_columns].values)
+
+
+        #DEV NOTE 18/2/21: to be implemented
+        #preprocess = nlp_preprocess.Preprocess()
+        #xtrain_tokens = preprocess.tokenize_texts(xtrain, freq_min=0.05, freq_max=0.95)
+
+
+        # Working version without frequency filter
         train_cleaned = xtrain.copy(deep=True).apply(nlp_preprocess.Preprocess().clean_text)
-        # test cleaned not used when training
-        # test_cleaned = xtest.copy(deep=True).apply(clean_text)
+
+
         vectorizer = TfidfVectorizer()
         vectorised_train_documents = vectorizer.fit_transform(train_cleaned)
         powersetsvc = LabelPowerset(LinearSVC())
@@ -136,4 +142,35 @@ if str(cwd()).find('belearner'):
     model = Model(nlp_model='en_core_web_sm')
     powersetsvc, vectorizer = model.train(data= df,X_column= 'text')
 
+
+
+
+"""def lemmatize(text_tokens: List[str]) -> List[str]:
+    def get_wordnet_pos(word):
+        #Map POS tag to first character lemmatize() accepts
+        tag = pos_tag([word])[0][1][0].upper()
+        tag_dict = {"J": wordnet.ADJ,
+                    "N": wordnet.NOUN,
+                    "V": wordnet.VERB,
+                    "R": wordnet.ADV}
+        return tag_dict.get(tag, wordnet.NOUN)
+
+    # Instantiate the WordNetLemmatizer
+    wordnet_lemmatizer = WordNetLemmatizer()
+    # Lemmatize all tokens into a new list: lemmatized
+    texts_lemmatized = [wordnet_lemmatizer.lemmatize(t, get_wordnet_pos(t)) for t in text_tokens]
+    return texts_lemmatized
+
+
+#DEV NOTE: not used
+def filter_words(texts_lemmatized: List[List[str]], freq_min=None, freq_max=None) -> List[List[str]]:
+    frequency_absolute = Counter([item for elem in texts_lemmatized for item in elem])
+    wordcloud = WordCloud(width=1000, height=500).generate_from_frequencies(frequency_absolute)
+    frequency_relative = wordcloud.words_
+    if freq_min is not None and freq_min > 0 and freq_min < 1:
+        rel_freq_filtered = {k: v for k, v in frequency_relative.items() if v > freq_min}
+    if freq_max is not None and freq_max > 0 and freq_max < 1:
+        rel_freq_filtered = {k: v for k, v in frequency_relative.items() if v < freq_max}
+    texts_filtered = [[t for t in pub_lem if t in rel_freq_filtered.keys()] for pub_lem in texts_lemmatized]
+    return texts_filtered"""
 
