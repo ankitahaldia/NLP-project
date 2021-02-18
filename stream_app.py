@@ -3,6 +3,8 @@ from PIL import Image
 import pickle
 import PyPDF2
 import nltk
+nltk.download('wordnet')
+nltk.download('punkt')
 import numpy as np
 from scipy.sparse import lil_matrix
 from nltk.stem.porter import PorterStemmer
