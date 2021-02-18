@@ -143,34 +143,3 @@ if str(cwd()).find('belearner'):
     powersetsvc, vectorizer = model.train(data= df,X_column= 'text')
 
 
-
-
-"""def lemmatize(text_tokens: List[str]) -> List[str]:
-    def get_wordnet_pos(word):
-        #Map POS tag to first character lemmatize() accepts
-        tag = pos_tag([word])[0][1][0].upper()
-        tag_dict = {"J": wordnet.ADJ,
-                    "N": wordnet.NOUN,
-                    "V": wordnet.VERB,
-                    "R": wordnet.ADV}
-        return tag_dict.get(tag, wordnet.NOUN)
-
-    # Instantiate the WordNetLemmatizer
-    wordnet_lemmatizer = WordNetLemmatizer()
-    # Lemmatize all tokens into a new list: lemmatized
-    texts_lemmatized = [wordnet_lemmatizer.lemmatize(t, get_wordnet_pos(t)) for t in text_tokens]
-    return texts_lemmatized
-
-
-#DEV NOTE: not used
-def filter_words(texts_lemmatized: List[List[str]], freq_min=None, freq_max=None) -> List[List[str]]:
-    frequency_absolute = Counter([item for elem in texts_lemmatized for item in elem])
-    wordcloud = WordCloud(width=1000, height=500).generate_from_frequencies(frequency_absolute)
-    frequency_relative = wordcloud.words_
-    if freq_min is not None and freq_min > 0 and freq_min < 1:
-        rel_freq_filtered = {k: v for k, v in frequency_relative.items() if v > freq_min}
-    if freq_max is not None and freq_max > 0 and freq_max < 1:
-        rel_freq_filtered = {k: v for k, v in frequency_relative.items() if v < freq_max}
-    texts_filtered = [[t for t in pub_lem if t in rel_freq_filtered.keys()] for pub_lem in texts_lemmatized]
-    return texts_filtered"""
-
