@@ -1,0 +1,8 @@
+numpy==1.19.2
+pandas==1.1.3
+streamlit==0.76.0
+scikit_multilearn==0.2.0
+nltk==3.5
+wordcloud==1.8.1
+PyPDF2==1.26.0
+scikit_learn==0.24.1
