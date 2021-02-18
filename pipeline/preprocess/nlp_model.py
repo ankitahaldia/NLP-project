@@ -1,4 +1,4 @@
-from NLP_project.pipeline.preprocess.preprocess import Preprocess
+from preprocess import Preprocess
 
 #testing
 from os import getcwd as cwd
@@ -130,12 +130,12 @@ class Model:
 
 #testing
    
-#START_PATH = dir(cwd())
-#if __name__ == "__main__" :
-#    DATA_PATH = (r'/home/becode/NLP-project/assets/new_file.csv')
-#    #testing a 100 docs sample
-#    df = pd.read_csv(DATA_PATH, delimiter='\t')
-#    model = Model(nlp_model='en_core_web_md')
-#    powersetsvc, vectorizer = model.train(data= df,X_column= 'text')
+START_PATH = dir(cwd())
+if __name__ == "__main__" :
+    DATA_PATH = '/home/becode/NLP_project/assets/new_file.csv'
+    #testing a 100 docs sample
+    df = pd.read_csv(DATA_PATH, delimiter='\t')
+    model = Model(nlp_model='en_core_web_md')
+    powersetsvc, vectorizer = model.train(data= df,X_column= 'text',y_columns = ['Industry1','Industry2'])
 
 

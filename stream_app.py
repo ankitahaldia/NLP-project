@@ -11,7 +11,7 @@ from nltk.tokenize import word_tokenize
 from wordcloud import STOPWORDS
 from pipeline.preprocess.preprocess import Preprocess
 
-model = pickle.load(open('pipeline/model/clf.pickle', 'rb'))
+
 wordnet_lemmatizer = WordNetLemmatizer()
 stemmer = PorterStemmer()
 english_stops = set(STOPWORDS)
@@ -61,7 +61,7 @@ def pdf_file_read(file_name):
 
 def prediction(processed_text) :
     
-    with open("pipeline/model/clf.pickle", 'rb') as model_file :
+    with open("pipeline/model/powersetsvc.pickle", 'rb') as model_file :
         model = pickle.load(model_file)
     with open("pipeline/model/vec.pickle", 'rb') as vec_file :
         vectorizer = pickle.load(vec_file)
