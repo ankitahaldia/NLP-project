@@ -101,6 +101,12 @@ class Preprocess:
         tokens = [t for t in tokens if t not in named_entities]
         return tokens
 
+    def clean_text(self, text:str, stop_words: List[str] = None, named_entities: List[str] = None,
+                   lenght_min: int=2) -> str:
+        tokens = self.tokenize_text(text, stop_words, named_entities, lenght_min)
+        text_cleaned = " ".join(tokens)
+        return text_cleaned
+
     def tokenize_texts(self, texts:Series, stop_words: List[str] = None, named_entities: List[str] = None,
                    lenght_min: int=2) -> List[List[str]]:
         texts_tokens = []
