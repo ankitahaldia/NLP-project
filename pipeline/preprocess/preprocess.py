@@ -4,7 +4,6 @@ from nltk.corpus import wordnet
 from nltk.tokenize import word_tokenize
 from nltk.tag import pos_tag
 from nltk.stem import WordNetLemmatizer
-
 # import entirely spacy to create Doc objects through nlp
 import spacy
 from spacy import load, lang
@@ -115,15 +114,15 @@ class Preprocess:
         return texts_tokens
 
 
-#testing
-"""
-if str(cwd()).find('belearner'):
-    START_PATH = dir(cwd())
-    DATA_PATH = join(START_PATH + r'\data\new_file.csv')
-    df = pd.read_csv(DATA_PATH, delimiter='\t')
-    preprocess = Preprocess()
-    def clean_text(text):
-        tokens = preprocess.tokenize_text(text)
-        return " ".join(tokens)
-    train_cleaned = xtrain.copy(deep=True).apply(clean_text)
-"""
+
+
+#if str(cwd()).find('belearner'):
+#    START_PATH = dir(cwd())
+#    DATA_PATH = join(START_PATH + r'\data\new_file.csv')
+#    df = pd.read_csv(DATA_PATH, delimiter='\t')
+#    preprocess = Preprocess()
+#    def clean_text(text):
+#        tokens = preprocess.tokenize_text(text)
+#        return " ".join(tokens)
+#    train_cleaned = xtrain.copy(deep=True).apply(clean_text)
+#
