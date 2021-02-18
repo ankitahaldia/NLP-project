@@ -78,11 +78,7 @@ class Model:
         train_labels = mlb.fit_transform(ytrain[y_columns].values)
         # test_labels not used when training
         # test_labels = mlb.fit_transform(ytest[y_columns].values)
-        preprocess = nlp_preprocess.Preprocess()
-        def clean_text(text):
-            tokens = preprocess.tokenize_text(text)
-            return " ".join(tokens)
-        train_cleaned = xtrain.copy(deep=True).apply(clean_text)
+        train_cleaned = xtrain.copy(deep=True).apply(nlp_preprocess.Preprocess().clean_text)
         # test cleaned not used when training
         # test_cleaned = xtest.copy(deep=True).apply(clean_text)
         vectorizer = TfidfVectorizer()
@@ -135,8 +131,9 @@ class Model:
 if str(cwd()).find('belearner'):
     START_PATH = dir(cwd())
     DATA_PATH = join(START_PATH + r'\data\new_file.csv')
-    df = pd.read_csv(DATA_PATH, delimiter='\t')
-    model = Model()
+    #testing a 100 docs sample
+    df = pd.read_csv(DATA_PATH, delimiter='\t').sample(10)
+    model = Model(nlp_model='en_core_web_sm')
     powersetsvc, vectorizer = model.train(data= df,X_column= 'text')
 
 
