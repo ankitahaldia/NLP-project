@@ -4,8 +4,6 @@ from nltk.corpus import wordnet
 from nltk.tokenize import word_tokenize
 from nltk.tag import pos_tag
 from nltk.stem import WordNetLemmatizer
-from nltk.stem.porter import PorterStemmer
-
 # import entirely spacy to create Doc objects through nlp
 import spacy
 from spacy import load, lang
@@ -23,6 +21,13 @@ from typing import Dict
 
 # GLOBAL VARIABLES
 NAMED_ENTITIES = ['microsoft']
+
+#testing
+from os import getcwd as cwd
+from os.path import dirname as dir
+from os.path import join
+import pandas as pd
+
 
 def lemmatize(text_tokens: List[str]) -> List[str]:
     def get_wordnet_pos(word):
@@ -75,8 +80,8 @@ class Preprocess:
             self.named_entities = nes
         return nes
 
-    def preprocess(self, text:str, stop_words: List[str] = None, named_entities: List[str] = None,
-                   lenght_min: int=2) -> str:
+    def tokenize_text(self, text:str, stop_words: List[str] = None, named_entities: List[str] = None,
+                   lenght_min: int=2) -> List[str]:
         if stop_words is None:
             stop_words = self.stop_words
         if named_entities is None:
@@ -87,14 +92,37 @@ class Preprocess:
         # keep strings with only alphabets
         tokens = [t for t in tokens if t.isalpha()]
         tokens = lemmatize(tokens)
-        # put words into base form
-        stemmer = PorterStemmer()
-        tokens = [stemmer.stem(t) for t in tokens]
         # remove short words, they're probably not useful
         tokens = [t for t in tokens if len(t) > lenght_min]
         # remove stopwords
         tokens = [t for t in tokens if t not in stop_words]
         # remove
-        no_nes = [t for t in tokens if t not in named_entities]
+        tokens = [t for t in tokens if t not in named_entities]
+        return tokens
+
+    def clean_text(self, text:str, stop_words: List[str] = None, named_entities: List[str] = None,
+                   lenght_min: int=2) -> str:
+        tokens = self.tokenize_text(text, stop_words, named_entities, lenght_min)
         text_cleaned = " ".join(tokens)
         return text_cleaned
+
+    def tokenize_texts(self, texts:Series, stop_words: List[str] = None, named_entities: List[str] = None,
+                   lenght_min: int=2) -> List[List[str]]:
+        texts_tokens = []
+        for text in texts:
+            texts_tokens = texts_tokens.append(self.tokenize_text(text, stop_words, named_entities, lenght_min))
+        return texts_tokens
+
+
+
+
+#if str(cwd()).find('belearner'):
+#    START_PATH = dir(cwd())
+#    DATA_PATH = join(START_PATH + r'\data\new_file.csv')
+#    df = pd.read_csv(DATA_PATH, delimiter='\t')
+#    preprocess = Preprocess()
+#    def clean_text(text):
+#        tokens = preprocess.tokenize_text(text)
+#        return " ".join(tokens)
+#    train_cleaned = xtrain.copy(deep=True).apply(clean_text)
+#
