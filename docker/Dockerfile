@@ -9,8 +9,10 @@ COPY docker /app/docker
 COPY pipeline /app/pipeline
 COPY pipeline/model /app/pipeline/model
 COPY pipeline/preprocess /app/pipeline/preprocessing
-COPY app.py /app/app.py
+COPY stream_app.py /app/stream_app.py
 
 WORKDIR /app
 
-CMD ["python","app.py"]
+RUN streamlit run stream_app.py
+
+CMD ["python","stream_app.py"]
