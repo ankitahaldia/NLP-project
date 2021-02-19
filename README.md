@@ -1,4 +1,11 @@
 # Brainstorming
+5 reasons people buy a product :
+- Make or save money (Profit)
+- Saves Time  (Easy to Use)
+- Looks Good (Prestige)
+- Feels Good (Pleasure)
+- Protects what we have (Security)
+
 
 ## Notes from Human
 Our NLP challenge: extract AI usecases out of organisational reports
