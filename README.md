@@ -64,6 +64,10 @@ We used Various sources for building the Industry related tags
 ## Preprocessing 
 'Having good data is 80% of the effort' preprocessing' [HUMAAIN]
 
+- Removing extra white spaces, extra punctuation, converting everything to lower case, removal of stop words. etc.
+- Tokenization, padding 
+
+
 ## Topic Modelling
 We make use of unsupervised technique using NMF to cluster news articles. 
 We labelled each news text with a specific Industry tag/label, considering the top 2 probilistic values.
